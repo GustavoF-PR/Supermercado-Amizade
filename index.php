@@ -24,7 +24,7 @@ require_once "config/banco.php";
     <br><br>
 
     <a href="usuario/login.php">Login</a>
-
+    <p>test merge</p>
 </body>
 
 </html>
