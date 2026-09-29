@@ -4,7 +4,14 @@ session_start();
 
 require_once "../Config/conexao.php";
 
-$sql = "SELECT produto.id, produto.nome, produto.descricao, produto.preco, fornecedor.nome AS fornecedor
+if (!isset($_SESSION["id_usuario"])) {
+
+    header("Location: ../index.php");
+    exit;
+
+}
+
+$sql = "SELECT produto.id, produto.nome, produto.descricao, produto.preco, fornecedor.nome
         FROM produto, fornecedor
         WHERE produto.id_fornecedor = fornecedor.id";
 
@@ -36,22 +43,19 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="d-flex justify-content-between align-items-center mb-4">
 
+            <h2>Catálogo de Produtos</h2>
+
             <div>
-                <h2>Catálogo de Produtos</h2>
 
-                <?php
+                <a href="inicio.php" class="btn btn-secondary">
+                    Início
+                </a>
 
-                if (isset($_SESSION["nome_usuario"])) {
-                    echo "<p>Olá, " . $_SESSION["nome_usuario"] . "!</p>";
-                }
-
-                ?>
+                <a href="carrinho.php" class="btn btn-primary">
+                    Carrinho
+                </a>
 
             </div>
-
-            <a href="carrinho.php" class="btn btn-primary">
-                Carrinho
-            </a>
 
         </div>
 
@@ -79,11 +83,12 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <p>
                                     <strong>Fornecedor:</strong>
-                                    <?php echo $produto["fornecedor"]; ?>
+                                    <?php echo $produto["nome"]; ?>
                                 </p>
 
                                 <h5>
-                                    R$ <?php echo number_format($produto["preco"], 2, ",", "."); ?>
+                                    R$
+                                    <?php echo number_format($produto["preco"], 2, ",", "."); ?>
                                 </h5>
 
                                 <div class="form-check mt-3">
@@ -118,7 +123,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="text-center mt-3">
 
                 <button type="submit" class="btn btn-success">
-                    Adicionar à cesta
+                    Adicionar ao carrinho
                 </button>
 
             </div>

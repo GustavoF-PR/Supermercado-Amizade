@@ -2,7 +2,7 @@
 
     session_start();
 
-    require_once "config/conexao.php";
+    header("Location: views/catalogo.php");
 
     $email = $_POST["email"];
     $senha = hash("sha256", $_POST["senha"]);
@@ -23,7 +23,7 @@
         $_SESSION["id_usuario"] = $usuario["id"];
         $_SESSION["nome_usuario"] = $usuario["nome"];
 
-        header("Location: Views/catalogo.php");
+        header("Location: Views/inicio.php");
         exit;
 
     } else {

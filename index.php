@@ -19,7 +19,7 @@ require_once "config/banco.php";
                         <div class="card-body p-4">
                             <h3 class="text-center mb-4">Supermercado Amizade</h3>
                             
-                            <form action="Tela_Login.php" method="POST">
+                            <form id="form-login" action="Tela_Login.php" method="POST">
 
                                 <div class="mb-3">
                                     <label for="email" class="form-label">E-mail</label>

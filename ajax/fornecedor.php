@@ -32,6 +32,51 @@ if ($acao == "cadastrar") {
     ]);
 
     header("Location: ../Views/fornecedor.php");
+    exit;
+
+}
+
+if ($acao == "alterar") {
+
+    $id = $_POST["id"];
+    $nome = $_POST["nome"];
+    $cnpj = $_POST["cnpj"];
+    $telefone = $_POST["telefone"];
+    $email = $_POST["email"];
+
+    $sql = "UPDATE fornecedor
+            SET nome = ?, cnpj = ?, telefone = ?, email = ?
+            WHERE id = ?";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([
+        $nome,
+        $cnpj,
+        $telefone,
+        $email,
+        $id
+    ]);
+
+    header("Location: ../Views/fornecedor.php");
+    exit;
+
+}
+
+if ($acao == "excluir") {
+
+    $id = $_POST["id"];
+
+    $sql = "DELETE FROM fornecedor WHERE id = ?";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([
+        $id
+    ]);
+
+    header("Location: ../Views/fornecedor.php");
+    exit;
 
 }
 

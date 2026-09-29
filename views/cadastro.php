@@ -28,7 +28,7 @@
                             Criar conta
                         </h3>
 
-                        <form action="../Ajax/usuario.php" method="POST">
+                        <form id="form-cadaastro"action="../Ajax/usuario.php" method="POST">
 
                             <input type="hidden" name="acao" value="cadastrar">
 
@@ -90,6 +90,7 @@
                                 Criar conta
                             </button>
 
+                            <script src="../assets/js/script.js"></script>
                         </form>
 
                         <div class="text-center mt-3">
