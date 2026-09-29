@@ -1,7 +1,11 @@
 <?php
 
+
 require_once "../Config/conexao.php";
 require_once "../Classes/Usuario.php";
+=======
+require_once "../config/conexao.php";
+require_once "../classes/usuario.php";
 
 $acao = $_POST["acao"];
 
