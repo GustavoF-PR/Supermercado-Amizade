@@ -34,6 +34,10 @@ require_once "config/banco.php";
                                 <button type="submit" class="btn btn-primary w-100 mt-2">Entrar</button>
                             </form>
 
+                            <div class="text-center mt-3">
+                                <a href="Views/cadastro.php">Criar uma conta</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
