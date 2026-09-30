@@ -19,7 +19,7 @@ require_once "config/banco.php";
                         <div class="card-body p-4">
                             <h3 class="text-center mb-4">Supermercado Amizade</h3>
                             
-                            <form id="form-login" action="Tela_Login.php" method="POST">
+                            <form id="form-login">
 
                                 <div class="mb-3">
                                     <label for="email" class="form-label">E-mail</label>
@@ -43,7 +43,7 @@ require_once "config/banco.php";
                 </div>
             </div>
         </div>
-
+        <script src="assets/js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
 </html>

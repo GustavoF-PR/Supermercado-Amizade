@@ -23,23 +23,17 @@ if ($acao == "cadastrar") {
     $stmt = $pdo->prepare($sql);
 
     try {
-
         $stmt->execute([
             $usuario->getNome(),
             $usuario->getEmail(),
             $usuario->getSenha()
         ]);
 
-        echo "Usuário cadastrado com sucesso!";
-
-        echo "<br><br>";
-
-        echo "<a href='../index.php'>Ir para o login</a>";
+        echo "sucesso";
 
     } catch (PDOException $e) {
 
-        echo "Erro ao cadastrar usuário.";
-
+        echo "Erro ao cadastrar usuário: " . $e->getMessage();
     }
 
 }
@@ -109,23 +103,27 @@ if ($acao == "logar") {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario) {
-
         $_SESSION["id_usuario"] = $usuario["id"];
         $_SESSION["nome_usuario"] = $usuario["nome"];
 
-        header("Location: ../Views/inicio.php");
+        echo "sucesso";
         exit;
-
     } else {
-
         echo "E-mail ou senha incorretos.";
-
-        echo "<br><br>";
-
-        echo "<a href='../index.php'>Voltar</a>";
-
     }
 
 }
 
+if (isset($_GET["acao"]) && $_GET["acao"] == "sair") {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $_SESSION = [];
+
+    session_destroy();
+
+    header("Location: ../index.php");
+    exit;
+}
 ?>

@@ -1,17 +1,14 @@
 <?php
+require_once "../Config/conexao.php";
 
 session_start();
 
-require_once "../Config/conexao.php";
-
 if (!isset($_SESSION["id_usuario"])) {
-
     header("Location: ../index.php");
     exit;
-
 }
 
-$sql = "SELECT produto.id, produto.nome, produto.descricao, produto.preco, fornecedor.nome
+$sql = "SELECT produto.id, produto.nome AS nome_produto, produto.descricao, produto.preco, fornecedor.nome AS nome_fornecedor
         FROM produto, fornecedor
         WHERE produto.id_fornecedor = fornecedor.id";
 
@@ -55,11 +52,15 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Carrinho
                 </a>
 
+                <a href="../ajax/usuario.php?acao=sair" class="btn btn-outline-danger btn-sm">
+                    Sair
+                </a>
+
             </div>
 
         </div>
 
-        <form action="../Ajax/produto.php" method="POST">
+        <form action="../ajax/carrinho.php" method="POST">
 
             <input type="hidden" name="acao" value="adicionar">
 
@@ -74,7 +75,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="card-body">
 
                                 <h5 class="card-title">
-                                    <?php echo $produto["nome"]; ?>
+                                    <?php echo $produto["nome_produto"]; ?>
                                 </h5>
 
                                 <p class="card-text">
@@ -83,7 +84,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <p>
                                     <strong>Fornecedor:</strong>
-                                    <?php echo $produto["nome"]; ?>
+                                    <?php echo $produto["nome_fornecedor"]; ?>
                                 </p>
 
                                 <h5>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: ../index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -28,7 +36,7 @@
                             Criar conta
                         </h3>
 
-                        <form id="form-cadaastro"action="../Ajax/usuario.php" method="POST">
+                        <form id="form-cadaastro"action="../ajax/usuario.php" method="POST">
 
                             <input type="hidden" name="acao" value="cadastrar">
 
@@ -90,7 +98,6 @@
                                 Criar conta
                             </button>
 
-                            <script src="../assets/js/script.js"></script>
                         </form>
 
                         <div class="text-center mt-3">
@@ -110,7 +117,7 @@
         </div>
 
     </div>
-
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

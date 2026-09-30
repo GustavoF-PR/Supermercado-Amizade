@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: ../index.php");
+    exit;
+}
 require_once "../Config/conexao.php";
 
 $sql = "SELECT * FROM fornecedor";
@@ -36,6 +41,10 @@ $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <a href="inicio.php" class="btn btn-secondary">
                 Voltar
+            </a>
+
+            <a href="../ajax/usuario.php?acao=sair" class="btn btn-outline-danger btn-sm">
+                Sair
             </a>
 
         </div>

@@ -66,20 +66,22 @@ if ($acao == "alterar") {
 }
 
 if ($acao == "excluir") {
-
     $id = $_POST["id"];
 
-    $sql = "DELETE FROM produto WHERE id = ?";
+    try {
+        $sql = "DELETE FROM produto WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
 
-    $stmt = $pdo->prepare($sql);
+        echo "sucesso";
 
-    $stmt->execute([
-        $id
-    ]);
-
-    header("Location: ../Views/produtos.php");
-    exit;
-
+    } catch (PDOException $e) {
+        if ($e->getCode() == '23000') {
+            echo "Não é possível excluir este produto pois ele já está num carrinho de compras. Remova-o do carrinho primeiro.";
+        } else {
+            echo "Erro ao excluir o produto: " . $e->getMessage();
+        }
+    }
 }
 
 if ($acao == "adicionar") {

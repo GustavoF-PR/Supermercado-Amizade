@@ -78,6 +78,13 @@ if ($acao == "excluir") {
     header("Location: ../Views/fornecedor.php");
     exit;
 
+
+}
+
+if ($acao == "listar") {
+    $fornecedores = Fornecedor::listarTodos($pdo);
+    
+    echo json_encode($fornecedores);
 }
 
 ?>

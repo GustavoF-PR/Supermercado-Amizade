@@ -1,13 +1,11 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION["id_usuario"])) {
-
     header("Location: ../index.php");
     exit;
-
 }
+?>
 
 ?>
 
@@ -36,6 +34,8 @@ if (!isset($_SESSION["id_usuario"])) {
             <p>
                 Olá, <?php echo $_SESSION["nome_usuario"]; ?>!
             </p>
+
+            <a href="../ajax/usuario.php?acao=sair" class="btn btn-outline-danger btn-sm">Sair</a>
 
             <p>
                 Escolha uma opção:
