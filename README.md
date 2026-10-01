@@ -47,7 +47,7 @@ Sistema web para controle de estoque, fornecedores e simulação de compras, des
 
 ### 👥 Autores
 
-- **Leonardo Barboza** - [GitHub](https://github.com/leonardobarboza7)
-- **Gustavo F.** - [GitHub](https://github.com/GustavoF-PR)
+- **Leonardo de Oliveira Barboza** - [GitHub](https://github.com/leonardobarboza7) - RA: 60006347
+- **Gustavo Henrique Espadrizano Francisco.** - [GitHub](https://github.com/GustavoF-PR) - RA: 60006470
 
 Projeto desenvolvido para a disciplina de **Desenvolvimento de Aplicações para WEB I** do curso de Sistemas de Informação.
